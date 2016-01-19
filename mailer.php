@@ -2,8 +2,7 @@
 require 'vendor/autoload.php';
 Dotenv::load(__DIR__);
 
-$sendgrid_username = $_ENV['SENDGRID_USERNAME'];
-$sendgrid_password = $_ENV['SENDGRID_PASSWORD'];
+$api_key           = $_ENV['API_KEY'];
 $from              = $_ENV['FROM'];
 $to                = $_ENV['TO'];
 
@@ -12,7 +11,7 @@ $emailadd = $_POST['email'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 
-$sendgrid = new SendGrid($sendgrid_username, $sendgrid_password, array("turn_off_ssl_verification" => true));
+$sendgrid = new SendGrid($api_key);
 $email    = new SendGrid\Email();
 $email->addTo($to)->
        setFrom($from)->
@@ -22,10 +21,14 @@ $email->addTo($to)->
        setHtml("<strong>Name:</strong> $name<br /> <strong>Email:</strong> $emailadd<br /> <strong>Subject:</strong> $subject<br /> <strong>Message:</strong> $message<br /> ")->
        addCategory('contact');
 
-$response = $sendgrid->send($email);
-var_dump($response);
-
-// 正常終了時にthanks.htmlへリダイレクト
-header('Location: thanks.html');
+try {
+  $response = $sendgrid->send($email);
+  if ($response->code !== 200) {
+    var_dump($response);
+  }
+  // 正常終了時にthanks.htmlへリダイレクト
+  header('Location: thanks.html');
+} catch (Exception $e) {
+  var_dump($e);
+}
 exit();
-
