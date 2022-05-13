@@ -1,13 +1,13 @@
 {
-  "name": "sendgrid-php-example-contact-form",
+  "name": "sendgridjp/sendgrid-php-example-contact-form",
   "description": "Example of using the SendGrid php library.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://github.com/scottmotte/sendgrid-php-example",
   "license": "MIT",
   "keywords": ["SendGrid", "sendgrid", "email", "send", "grid", "php"],
   "minimum-stability" : "dev",
   "require": {
-    "sendgrid/sendgrid": "2.1.1",
+    "sendgrid/sendgrid": "8.0.0",
     "vlucas/phpdotenv": "1.0.2"
   }
 }

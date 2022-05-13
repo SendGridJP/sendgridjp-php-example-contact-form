@@ -17,13 +17,11 @@ composer install
 .envファイルは以下のような内容になっています。
 
 ```bash
-SENDGRID_USERNAME=your_username
-SENDGRID_PASSWORD=your_password
+SENDGRID_APIKEY=your_apikey
 TO=you@youremail.com
 FROM=you@youremail.com
 ```
-SENDGRID_USERNAME:SendGridのユーザ名を指定してください。  
-SENDGRID_PASSWORD:SendGridのパスワードを指定してください。  
+SENDGRID_APIKEY:SendGridのAPIキーを指定してください。   
 TO:フォームの内容を送信する宛先を指定してください。  
 FROM:フォームの内容を送信する際のFromアドレスを指定してください。  
 
