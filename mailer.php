@@ -1,10 +1,11 @@
 <?php
 require 'vendor/autoload.php';
-Dotenv::load(__DIR__);
+$dotenv = Dotenv\Dotenv::createMutable(__DIR__);
+$dotenv->load();
 
 $sendgrid_apikey   = $_ENV['SENDGRID_APIKEY'];
 $from              = $_ENV['FROM'];
-$to                = $_ENV['TO'];
+$bcc               = $_ENV['BCC'];
 
 $name = $_POST['name'];
 $emailadd = $_POST['email'];
@@ -13,7 +14,8 @@ $message = $_POST['message'];
 
 $sendgrid = new SendGrid($sendgrid_apikey, array("turn_off_ssl_verification" => true));
 $email    = new SendGrid\Mail\Mail();
-$email->addTo($to);
+$email->addTo($emailadd);
+$email->addBcc($bcc);
 $email->setFrom($from, "問合せフォーム");
 $email->setSubject("[ContactForm] $subject");
 $email->addContent("text/plain", "Name: $name \r\nEmail: $emailadd \r\nSubject: $subject \r\nMessage: $message \r\n");

@@ -18,11 +18,11 @@ composer install
 
 ```bash
 SENDGRID_APIKEY=your_apikey
-TO=you@youremail.com
+BCC=you@youremail.com
 FROM=you@youremail.com
 ```
 SENDGRID_APIKEY:SendGridのAPIキーを指定してください。   
-TO:フォームの内容を送信する宛先を指定してください。  
+BCC:フォームの内容を送信する宛先を指定してください。  
 FROM:フォームの内容を送信する際のFromアドレスを指定してください。  
 
 
